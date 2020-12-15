@@ -13,4 +13,6 @@ interface UserService
     public function updateUser(int $id, array $data = []);
 
     public function deleteUser(int $id);
+
+    public function verifyUserEmail(int $id);
 }

@@ -13,4 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\LoginController;
+use App\Models\User;
+use App\Mail\EmailVerification;
+
+
 Route::view('/', 'index');
+
+Route::get('/verify/email', [LoginController::class, 'verifyEmail'])
+    ->name('auth.email.verification');
+
+route::get('/email', function() {
+    $user = User::find(1);
+
+    return new EmailVerification($user);
+});
+
+Route::get('/logout', function() {
+
+    \Auth::logout();
+    return 'done';
+
+});

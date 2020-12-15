@@ -1,9 +1,16 @@
-require('./bootstrap');
+require('./bootstrap')
 
-window.Vue = require('vue');
+window.Vue = require('vue')
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+import vuetify from './plugins/vuetify'
+import store from './store'
+import router from './router'
+
+Vue.component('qrmenu-app', require('./App.vue').default)
 
 const app = new Vue({
+    vuetify,
+    store,
+    router,
     el: '#app',
 });

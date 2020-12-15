@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, SoftDeletes;
 
@@ -51,13 +51,18 @@ class User extends Authenticatable
         return "{$this->name} {$this->last_name}";
     }
 
-    public function qrmenus()
+    public function qrmenu()
     {
-        return $this->hasMany(
+        return $this->hasOne(
             'App\Models\Qrmenu',
-            'qrmenu_id',
+            'manager_id',
             'id'
         );
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        //
     }
 
 }

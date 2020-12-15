@@ -1,5 +1,7 @@
 <template>
-  <h1>this is vue js</h1>
+  <div>
+    <v-app-bar></v-app-bar>
+  </div>
 </template>
 
 <script>

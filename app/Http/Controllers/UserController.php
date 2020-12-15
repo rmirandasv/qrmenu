@@ -42,6 +42,15 @@ class UserController extends Controller
         ]);
     }
 
+    public function register(StoreUser $request)
+    {
+        $user = $this->userService->addUser($request->validated());
+
+        return (new User($user))->additional([
+            'message' => __('messages.users.regisrered')
+        ]);
+    }
+
     public function updateUser($id, UpdateUSer $request)
     {
         $this->userService->updateUser($id, $request->validated());

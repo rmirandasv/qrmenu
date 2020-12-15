@@ -3,6 +3,9 @@
 namespace App\Services;
 
 use App\Repositories\QrmenuRepository;
+use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Http\Request;
 
 class QrmenuServiceImpl implements QrmenuService
 {
@@ -37,6 +40,25 @@ class QrmenuServiceImpl implements QrmenuService
     public function deleteMenu(int $id)
     {
         return $this->qrmenuRepository->deleteMenu($id);
+    }
+
+    public function uploadCover (Request $request)
+    {
+        $cover = null;
+
+        if ($request->hasFile('cover')) {
+            $cover = $request->cover;
+        }
+
+        if ($cover === null) {
+            return false;
+        }
+
+        $coverName = Str::random(40);
+
+        $request->cover->storeAs('covers', $coverName);
+
+        return asset('covers/'.$coverName);
     }
 
 }

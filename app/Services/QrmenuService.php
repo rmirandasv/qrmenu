@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Illuminate\Http\Request;
+
 interface QrmenuService
 {
     public function getUserMenu(int $userId);
@@ -13,4 +15,6 @@ interface QrmenuService
     public function updateMenu(int $id, array $data);
 
     public function deleteMenu(int $id);
+
+    public function uploadCover(REquest $request);
 }

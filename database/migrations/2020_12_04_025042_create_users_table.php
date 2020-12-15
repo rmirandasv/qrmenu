@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('company_logo', 255)->nullable();
             $table->string('password', 255);
             $table->string('remember_token', 255)->nullable();
-            $table->dateTime('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

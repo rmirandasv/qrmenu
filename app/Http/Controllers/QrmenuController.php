@@ -61,5 +61,20 @@ class QrmenuController extends Controller
         ], 200);
     }
 
+    public function uploadCover(Request $request)
+    {
+        $uploaded = $this->qrmenuService->uploadCover($request);
+
+        if ($uploaded) {
+            return response()->json([
+                'uploaded'  => true,
+                'cover_url' => $uploaded
+            ], 200);
+        }
+
+        return response()->json([], 400);
+
+    }
+
     
 }

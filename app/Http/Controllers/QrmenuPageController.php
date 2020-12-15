@@ -26,9 +26,9 @@ class QrmenuPageController extends Controller
         return new QrmenuPageCollection($pages);
     }
 
-    public function getMenuPage($id)
+    public function getMenuPage($menuId, $pageId)
     {
-        $page = $this->qrmenuPageService->getMenuPage($id);
+        $page = $this->qrmenuPageService->getMenuPage($pageId);
 
         return new QrmenuPage($page);
     }
